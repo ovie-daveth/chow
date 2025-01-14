@@ -1,10 +1,8 @@
+import { Redirect } from 'expo-router';
 import { StyleSheet, View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function HomeScreen() {
-  return (
-    <View className=" text-red-500 bg-black h-screen">
-      <Text className=" text-red-500 mt-20" >Hello world</Text>
-    </View>
-  )
+  return <Redirect href={'/(auth)/onboardingScreen'} />
 }

@@ -1,21 +1,23 @@
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+const tintColorLight = '#FFB84C'; // Light orange tint
+const tintColorDark = '#D16014'; // Dark orange tint
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: '#4A2500', // Dark brown for text
+    background: '#FFFFFF', // White background
+    tint: tintColorLight, // Light orange tint for highlights
+    icon: '#FFA94D', // Slightly darker orange for icons
+    tabIconDefault: '#FFE4B5', // Pale orange for default tab icons
+    tabIconSelected: tintColorLight, // Light orange for selected tab icons
+    buttons: '#F97316', // Vibrant orange for buttons
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: '#FFFFFF', // White text on dark background
+    background: '#000000', // Black background
+    tint: tintColorDark, // Dark orange tint for highlights
+    icon: '#D97D4A', // Medium orange for icons
+    tabIconDefault: '#B5651D', // Deep orange for default tab icons
+    tabIconSelected: tintColorDark, // Dark orange for selected tab icons
+    buttons: '#FF8C42', // Bright orange for buttons
   },
 };
