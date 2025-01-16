@@ -4,9 +4,5 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function HomeScreen() {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  )
+  return <Redirect href={'/(auth)/onboard'} />
 }

@@ -77,7 +77,7 @@ const OtpPage = () => {
     }
     Alert.alert('Success', `OTP Submitted: ${otpValue}`);
     console.log('OTP Submitted:', otpValue);
-    router.replace("/(home)/home")
+    router.replace("/(home)")
   };
 
   return (
