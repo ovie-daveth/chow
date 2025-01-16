@@ -7,8 +7,9 @@ interface Prop {
     title: string,
     onPress?: () => void;
     Icon?: any
+    cwidth?: number
 }
-export const Button = ({title, onPress, Icon}: Prop) => {
+export const Button = ({title, onPress, Icon, cwidth}: Prop) => {
 
     const {width, height} = useWindowDimensions()
     const theme = useTheme()
@@ -17,7 +18,7 @@ export const Button = ({title, onPress, Icon}: Prop) => {
     const styles = StyleSheet.create({
         ButtonContainer: {
             backgroundColor: Colors.light.buttons,
-            width: width / 1.5,
+            width: width / (cwidth ?? 1.1),
             height: 45,
             marginTop: 15,
             paddingVertical: 8,

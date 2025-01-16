@@ -9,7 +9,7 @@ export const Colors = {
     icon: '#FFA94D', // Slightly darker orange for icons
     tabIconDefault: '#FFE4B5', // Pale orange for default tab icons
     tabIconSelected: tintColorLight, // Light orange for selected tab icons
-    buttons: '#F97316', // Vibrant orange for buttons
+    buttons: '#FFB84C', // Vibrant orange for buttons
   },
   dark: {
     text: '#FFFFFF', // White text on dark background
