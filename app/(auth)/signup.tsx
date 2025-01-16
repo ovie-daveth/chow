@@ -63,6 +63,7 @@ const SignUp = () => {
       Alert.alert('Success', 'Form submitted successfully!', [
       { text: 'OK', onPress: () => console.log(form) },
       ]);
+      router.push("/(auth)/otp")
     } 
        
     setErrors(validationErrors);
