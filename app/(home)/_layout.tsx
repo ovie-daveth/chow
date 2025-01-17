@@ -33,8 +33,31 @@ export default function TabLayout() {
             <Ionicons
               name="home"
               size={focused ? 30 : 24}
-              color={focused ? '#007AFF' : '#8E8E93'}
+              color={focused ? '#FFB84C' : '#8E8E93'}
             />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+              Home
+            </Text>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="restaurants"
+        options={{
+          title: "Restaurants",
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name="restaurant"
+              size={focused ? 30 : 24}
+              color={focused ? '#FFB84C' : '#8E8E93'}
+            />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+              Restaurants
+            </Text>
           ),
         }}
       />
@@ -46,12 +69,17 @@ export default function TabLayout() {
             <Ionicons
               name="cart"
               size={focused ? 30 : 24}
-              color={focused ? '#007AFF' : '#8E8E93'}
+              color={focused ? '#FFB84C' : '#8E8E93'}
             />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+              Orders
+            </Text>
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
@@ -59,12 +87,17 @@ export default function TabLayout() {
             <Ionicons
               name="person"
               size={focused ? 30 : 24}
-              color={focused ? '#007AFF' : '#8E8E93'}
+              color={focused ? '#FFB84C' : '#8E8E93'}
             />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+              Profile
+            </Text>
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="settings"
         options={{
           title: "Settings",
@@ -72,8 +105,13 @@ export default function TabLayout() {
             <Ionicons
               name="settings"
               size={focused ? 30 : 24}
-              color={focused ? '#007AFF' : '#8E8E93'}
+              color={focused ? '#FFB84C' : '#8E8E93'}
             />
+          ),
+          tabBarLabel: ({ focused }) => (
+            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+              Settings
+            </Text>
           ),
         }}
       />
@@ -106,7 +144,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   activeTabButton: {
-    transform: [{ scale: 1.2 }],
-    marginTop: -10,
+    marginTop: 5,
   },
 });

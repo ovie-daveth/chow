@@ -53,21 +53,22 @@ const SignUp = () => {
   };
 
   const handleSubmit = () => {
-    const validationErrors = validateForm();
-    if (
-        validationErrors.confirmPassword === "" && 
-        validationErrors.email === "" && 
-        validationErrors.name === "" && 
-        validationErrors.password === "" 
-    ) {
-      Alert.alert('Success', 'Form submitted successfully!', [
-      { text: 'OK', onPress: () => console.log(form) },
-      ]);
-      router.push("/(auth)/otp")
-    } 
+    // const validationErrors = validateForm();
+    // if (
+    //     validationErrors.confirmPassword === "" && 
+    //     validationErrors.email === "" && 
+    //     validationErrors.name === "" && 
+    //     validationErrors.password === "" 
+    // ) {
+    //   Alert.alert('Success', 'Form submitted successfully!', [
+    //   { text: 'OK', onPress: () => console.log(form) },
+    //   ]);
+    //   router.push("/(auth)/otp")
+    // } 
        
-    setErrors(validationErrors);
-    return;
+    // setErrors(validationErrors);
+    // return;
+    router.push("/(auth)/otp")
   };
 
   const handlePasswordVisibilityToggle = () => {

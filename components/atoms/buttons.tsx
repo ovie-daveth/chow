@@ -38,9 +38,9 @@ export const Button = ({title, onPress, Icon, cwidth}: Prop) => {
     })
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress} style={styles.ButtonContainer}>
-        <View style={styles.buttonBody}>
+        <View className='flex items-end flex-row gap-5' style={styles.buttonBody}>
             {
-                Icon &&<Text>{Icon}</Text>
+                Icon && Icon
             }
             <Text className='font-bold' style={styles.buttonText}>{title}</Text>
         </View>
