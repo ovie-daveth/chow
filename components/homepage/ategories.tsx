@@ -56,12 +56,16 @@ const Categories = () => {
                 onPress={() => handlePress(item.id, viewRef)}
                 className="mx-5 flex-row items-center"
               >
-                <Image
+               <View  style={[styles.imageContainer,
+                active === item.id ? styles.imageContainerActive : styles.imageContainerInActive,
+              ]}>
+               <Image
                   source={item.image}
                   className="w-8 h-8"
                   style={styles.image}
                   resizeMode="contain"
                 />
+               </View>
                 <Text>{item.name}</Text>
               </TouchableOpacity>
             </Animatable.View>
@@ -87,15 +91,29 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   active: {
-    backgroundColor: Colors.light.buttons,
+    backgroundColor: "#E68A2F",
   },
   inactive: {
-    backgroundColor: '#fff',
+    backgroundColor: '#eee',
+  },
+  activeText: {
+    color: "#fff"
+  },
+  imageContainer: {
+    borderRadius: 100,
+    width: 33,
+    height: 33,
+    marginRight: 10,
+  },
+  imageContainerInActive: {
+    backgroundColor: "#E8E8E8"
+  },
+  imageContainerActive: {
+    backgroundColor: "#FFB84C"
   },
   image: {
     borderRadius: 100,
     width: 30,
-    height: 30,
-    marginRight: 10,
+    height: 30
   },
 });

@@ -2,6 +2,7 @@ import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '@/constants/Colors';
 
 export default function TabLayout() {
   return (
@@ -10,7 +11,7 @@ export default function TabLayout() {
         headerShown: false,
         tabBarStyle: {
           position: 'absolute',
-          backgroundColor: 'white',
+          backgroundColor: Colors.light.search,
           height: 70,
           borderRadius: 20,
           marginHorizontal: 20,
@@ -33,11 +34,11 @@ export default function TabLayout() {
             <Ionicons
               name="home"
               size={focused ? 30 : 24}
-              color={focused ? '#FFB84C' : '#8E8E93'}
+              color={focused ? '#E68A2F' : '#8E8E93'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+            <Text style={{ color: focused ? '#E68A2F' : '#8E8E93', fontSize: 10 }}>
               Home
             </Text>
           ),
@@ -51,11 +52,11 @@ export default function TabLayout() {
             <Ionicons
               name="restaurant"
               size={focused ? 30 : 24}
-              color={focused ? '#FFB84C' : '#8E8E93'}
+              color={focused ? '#E68A2F' : '#8E8E93'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+            <Text style={{ color: focused ? '#E68A2F' : '#8E8E93', fontSize: 10 }}>
               Restaurants
             </Text>
           ),
@@ -69,11 +70,11 @@ export default function TabLayout() {
             <Ionicons
               name="cart"
               size={focused ? 30 : 24}
-              color={focused ? '#FFB84C' : '#8E8E93'}
+              color={focused ? '#E68A2F' : '#8E8E93'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+            <Text style={{ color: focused ? '#E68A2F' : '#8E8E93', fontSize: 10 }}>
               Orders
             </Text>
           ),
@@ -87,11 +88,11 @@ export default function TabLayout() {
             <Ionicons
               name="person"
               size={focused ? 30 : 24}
-              color={focused ? '#FFB84C' : '#8E8E93'}
+              color={focused ? '#E68A2F' : '#8E8E93'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+            <Text style={{ color: focused ? '#E68A2F' : '#8E8E93', fontSize: 10 }}>
               Profile
             </Text>
           ),
@@ -105,11 +106,11 @@ export default function TabLayout() {
             <Ionicons
               name="settings"
               size={focused ? 30 : 24}
-              color={focused ? '#FFB84C' : '#8E8E93'}
+              color={focused ? '#E68A2F' : '#8E8E93'}
             />
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? '#FFB84C' : '#8E8E93', fontSize: 10 }}>
+            <Text style={{ color: focused ? '#E68A2F' : '#8E8E93', fontSize: 10 }}>
               Settings
             </Text>
           ),
