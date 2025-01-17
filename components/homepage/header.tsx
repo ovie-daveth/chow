@@ -47,7 +47,9 @@ const Header = () => {
     <View style={styles.headerContainer}>
         <View className="flex-row items-center justify-between " style={styles.headerContent}>
     <View className='flex-row gap-5'>
-      <Ionicons name="menu-outline" size={24} color="black" />
+     <TouchableOpacity activeOpacity={0.7}>
+        <Ionicons name="menu-outline" size={24} color="black" />
+     </TouchableOpacity>
       <View className=''>
         <Text>DELIVER TO</Text>
         <TouchableOpacity activeOpacity={0.7}>

@@ -4,6 +4,7 @@ import * as Animatable from 'react-native-animatable';
 import { categories } from '@/constants/data';
 import { Colors } from '@/constants/Colors';
 import { AntDesign } from '@expo/vector-icons';
+import Listheader from './listheader';
 
 const Categories = () => {
   const [active, setActive] = useState<number | null>(1);
@@ -22,17 +23,15 @@ const Categories = () => {
     }
   };
 
+  const onPress = () => {
+
+  }
+
   return (
     <View style={styles.container}>
       {/* Header Section */}
-      <View style={styles.header}>
-        <Text style={styles.headerText}>All Categories</Text>
-        <TouchableOpacity activeOpacity={0.7} style={styles.viewAllButton}>
-          <Text style={styles.viewAllText}>View All</Text>
-          <AntDesign name="right" size={15} color="black" />
-        </TouchableOpacity>
-      </View>
-
+    
+        <Listheader title="All Categories" onPress={onPress} />
       {/* Categories List */}
       <FlatList
         horizontal
@@ -77,32 +76,7 @@ export default Categories;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  headerText: {
-    fontSize: 15,
-    fontWeight: 400,
-    color: Colors.dark.background,
-  },
-  viewAllButton: {
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    borderRadius: 10,
-    display: "flex",
-    flexDirection: "row",
-    gap: 5,
-    alignItems: "center"
-  },
-  viewAllText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: Colors.light.text,
   },
   content: {
     marginRight: 13,
