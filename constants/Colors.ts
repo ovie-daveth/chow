@@ -10,6 +10,7 @@ export const Colors = {
     tabIconDefault: '#FFE4B5', // Pale orange for default tab icons
     tabIconSelected: tintColorLight, // Light orange for selected tab icons
     buttons: '#FFB84C', // Vibrant orange for buttons
+    search: "#E8E8E8"
   },
   dark: {
     text: '#FFFFFF', // White text on dark background
