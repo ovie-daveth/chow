@@ -1,8 +1,10 @@
 
 import Categories from '@/components/homepage/ategories';
+import DishesPerRestaurantList from '@/components/homepage/dishes-per-restaurant';
 import Header from '@/components/homepage/header';
 import RestaurantLists from '@/components/homepage/restaurantLists';
 import { Colors } from '@/constants/Colors';
+import { restaurantsList } from '@/constants/data';
 import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet, TextInput, View, Text, ScrollView, TouchableOpacity, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -47,6 +49,15 @@ export default function HomeScreen() {
       <View className='mt-5'>
         <RestaurantLists />
       </View>
+     <View className='mt-10'>
+     {
+      restaurantsList.map((item) => (
+        <View key={item.id} className='-mt-6'>
+        <DishesPerRestaurantList data={item} />
+      </View>
+      ))
+     }
+     </View>
     </ScrollView>
    </SafeAreaView>
   )

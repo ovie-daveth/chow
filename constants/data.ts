@@ -79,9 +79,14 @@ export const categories = [
       description: "Delicious cheesy pizzas with various toppings.",
       image: food1,
       tags: ["burger", "chicken", "wings", "salad"],
-      ratings: 4.5, // Average rating out of 5
-      timeOfDelivery: "30-45 mins", // Estimated delivery time
-      deliveryType: "Free", // Delivery type
+      ratings: 4.5,
+      timeOfDelivery: "30-45 mins",
+      deliveryType: "Free",
+      dishes: [
+        { name: "Cheese Pizza", amount: 12.99, rating: 4.7, image: food4},
+        { name: "BBQ Chicken Wings", amount: 9.99, rating: 4.6, image: food3 },
+        { name: "Caesar Salad", amount: 8.99, rating: 4.3, image: food1}
+      ],
     },
     {
       id: 2,
@@ -92,6 +97,11 @@ export const categories = [
       ratings: 4.7,
       timeOfDelivery: "40-55 mins",
       deliveryType: "Paid",
+      dishes: [
+        { name: "Grilled Salmon", amount: 15.99, rating: 4.8, image: food1 },
+        { name: "Lobster Bisque", amount: 12.49, rating: 4.7, image: food2 },
+        { name: "Fried Calamari", amount: 10.99, rating: 4.5, image: food3 },
+      ],
     },
     {
       id: 3,
@@ -102,6 +112,11 @@ export const categories = [
       ratings: 4.3,
       timeOfDelivery: "20-30 mins",
       deliveryType: "Free",
+      dishes: [
+        { name: "Cappuccino", amount: 4.99, rating: 4.6, image: food1 },
+        { name: "Blueberry Muffin", amount: 3.49, rating: 4.4, image: food4 },
+        { name: "Chocolate Croissant", amount: 3.99, rating: 4.5, image: food2 },
+      ],
     },
     {
       id: 4,
@@ -112,6 +127,11 @@ export const categories = [
       ratings: 4.8,
       timeOfDelivery: "50-65 mins",
       deliveryType: "Paid",
+      dishes: [
+        { name: "Butter Chicken", amount: 13.99, rating: 4.9, image: food1 },
+        { name: "Vegetable Biryani", amount: 10.99, rating: 4.8, image: food2 },
+        { name: "Garlic Naan", amount: 2.99, rating: 4.7, image: food3 }
+      ],
     },
     {
       id: 5,
@@ -122,7 +142,14 @@ export const categories = [
       ratings: 4.6,
       timeOfDelivery: "25-35 mins",
       deliveryType: "Free",
+      dishes: [
+        { name: "Quinoa Salad", amount: 9.99, rating: 4.7, image: food3},
+        { name: "Avocado Toast", amount: 7.49, rating: 4.6, image: food1},
+        { name: "Berry Smoothie Bowl", amount: 8.99, rating: 4.8, image: food4 },
+      ],
     },
   ];
+  
+  
   
   
