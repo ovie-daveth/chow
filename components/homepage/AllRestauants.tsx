@@ -1,25 +1,27 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, useWindowDimensions } from 'react-native'
-import React, { useState } from 'react'
+import React from 'react'
 import Listheader from './listheader'
-import { featuredDishes } from '@/constants/data'
+import { restaurantsList } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
+import { Colors } from '@/constants/Colors'
 
-const FeaturedDishes = () => {
+const AllRestauants = () => {
 
     const { width } = useWindowDimensions();
     const styles = StyleSheet.create({
       container: {
         paddingHorizontal: 10,
+        marginTop: 14
       },
       content: {
-        marginRight: 15,
+        marginBottom: 10,
         paddingLeft: 0,
         display: 'flex',
         flexDirection: 'column',
         borderRadius: 10,
         gap: 10,
         height: 260, // Set a fixed height for consistency
-        width: width * 0.8, // Adjust width as needed // Optional: Add background to visualize layout
+        width: width * 0.95, // Adjust width as needed // Optional: Add background to visualize layout
         padding: 0,
       },
       image: {
@@ -31,30 +33,25 @@ const FeaturedDishes = () => {
       tag: {
         marginLeft: 5,
       },
+       ratebg: {
+                  backgroundColor: Colors.light.search,
+                  padding: 5,
+                  borderRadius: 100
+                },
       addedon: {
-        marginTop: 5,
-        justifyContent: "space-between",
-        width: width / 1.28,
-        paddingRight: 20
+        marginTop: 10,
+        gap: 10,
       },
       tagText: {
         color: 'gray',
       },
     });
-
-
-    const [like, setLike] = useState<number | null>(null)
-    const handleFavorite = (id: number) => {
-        setLike(id)
-    }
     
     return (
       <View style={styles.container}>
-        <Listheader icon={<MaterialCommunityIcons name="puzzle-star" size={18} color="orange" />} title="Featured" />
         <FlatList
-          horizontal
           showsHorizontalScrollIndicator={false}
-          data={featuredDishes}
+          data={restaurantsList}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
             return (
@@ -73,31 +70,33 @@ const FeaturedDishes = () => {
                   <Text style={styles.tag} className="font-medium text-xl tracking-wider">
                     {item.name}
                   </Text>
-                  <Text style={styles.tag} className="font-light text-sm tracking-wider">
-                    {item.restaurant}
-                  </Text>
-                  <View style={[styles.addedon, styles.tag]} className="flex items-center flex-row justify-between">
-                    <View className='flex flex-row items-center gap-5'>
-                    <View className="flex items-center gap-2 flex-row">
+                  <View style={styles.tag} className="flex flex-row items-center gap-1">
+  {item.tags.map((tag, idx) => (
+    <React.Fragment key={idx}>
+      <Text style={styles.tagText} className="font-light text-sm tracking-wider">
+        {tag}
+      </Text>
+      {idx < item.tags.length - 1 && (
+        <Text style={styles.tagText} className="font-light text-sm tracking-wider">
+          -
+        </Text>
+      )}
+    </React.Fragment>
+  ))}
+</View>
+
+                  <View style={styles.addedon} className="flex items-center gap-5 flex-row justify-between">
+                    <View style={styles.ratebg} className="flex items-center gap-2 flex-row">
                       <AntDesign name="staro" size={15} color="orange" />
-                      <Text className='text-sm'>{item.rating}</Text>
+                      <Text className="text-sm">{item.ratings} ({item.noofrate})</Text>
                     </View>
                     <View className="flex items-center flex-row gap-2">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className='text-sm'>{item.deliveryType}</Text>
+                      <Text className="text-sm">{item.deliveryType}</Text>
                     </View>
                     <View className="flex items-center gap-2 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
-                      <Text className='text-sm'>{item.timeOfDelivery}</Text>
-                    </View>
-                    </View>
-                    <View>
-                    {/* */}
-                    <TouchableOpacity activeOpacity={0.7} onPress={() => handleFavorite(item.id)}>
-                        {
-                            like === item.id ? <AntDesign name="heart" size={15} color="red" />  : <AntDesign name="hearto" size={15} color="black" />
-                        }
-                    </TouchableOpacity>
+                      <Text className="text-sm">{item.timeOfDelivery}</Text>
                     </View>
                   </View>
                   </View>
@@ -112,4 +111,4 @@ const FeaturedDishes = () => {
   
 }
 
-export default FeaturedDishes
+export default AllRestauants

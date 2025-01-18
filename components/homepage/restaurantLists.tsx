@@ -20,7 +20,7 @@ const RestaurantLists = () => {
         borderRadius: 10,
         gap: 10,
         height: 260, // Set a fixed height for consistency
-        width: width * 0.8, // Adjust width as needed // Optional: Add background to visualize layout
+        width: width * 0.95, // Adjust width as needed // Optional: Add background to visualize layout
         padding: 0,
       },
       image: {
@@ -37,13 +37,20 @@ const RestaurantLists = () => {
                   padding: 5,
                   borderRadius: 100
                 },
+                addedonContainer: {
+                  marginTop: 10,
+                },
       addedon: {
-        marginTop: 10,
         gap: 10,
+      },
+      addedonText: {
+        color: "#C2410C",
+        fontWeight: 600
       },
       tagText: {
         color: 'gray',
       },
+
     });
     
     return (
@@ -69,31 +76,40 @@ const RestaurantLists = () => {
                   />
                   <View style={{paddingHorizontal: 5}}>
                   <Text style={styles.tag} className="font-medium text-xl tracking-wider">
-                    {item.name}
+                    {item.name} - {item.region}
                   </Text>
-                  <View style={styles.tag} className="flex flex-row items-center gap-5">
+                  <View style={styles.tag} className="flex flex-row items-center gap-1">
                     {item.tags.map((tag, idx) => (
-                      <Text
-                        style={styles.tagText}
-                        key={idx}
-                        className="font-light text-sm tracking-wider"
-                      >
-                        {tag}
-                      </Text>
+                      <React.Fragment key={idx}>
+                        <Text style={styles.tagText} className="font-light text-sm tracking-wider">
+                          {tag}
+                        </Text>
+                        {idx < item.tags.length - 1 && (
+                          <Text style={styles.tagText} className="font-light text-sm tracking-wider">
+                            -
+                          </Text>
+                        )}
+                      </React.Fragment>
                     ))}
                   </View>
-                  <View style={styles.addedon} className="flex items-center gap-5 flex-row justify-between">
-                    <View style={styles.ratebg} className="flex items-center gap-2 flex-row">
+
+                  <View style={styles.addedonContainer} className="flex items-center gap-5 flex-row justify-between">
+                    <View style={styles.addedon} className="flex items-center gap-3 flex-row justify-between">
+                    <View style={styles.ratebg} className="flex items-center gap-1 flex-row">
                       <AntDesign name="staro" size={15} color="orange" />
                       <Text className="text-sm">{item.ratings} ({item.noofrate})</Text>
                     </View>
-                    <View className="flex items-center flex-row gap-2">
+                    <View className="flex items-center flex-row gap-1">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
                       <Text className="text-sm">{item.deliveryType}</Text>
                     </View>
-                    <View className="flex items-center gap-2 flex-row">
+                    <View className="flex items-center gap-1 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
                       <Text className="text-sm">{item.timeOfDelivery}</Text>
+                    </View>
+                    </View>
+                    <View>
+                      <Text style={styles.addedonText} className='bg-orange-600'>Closed</Text>
                     </View>
                   </View>
                   </View>

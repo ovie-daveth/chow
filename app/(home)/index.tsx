@@ -1,4 +1,4 @@
-
+import AllRestauants from '@/components/homepage/AllRestauants';
 import Categories from '@/components/homepage/ategories';
 import DishesPerRestaurantList from '@/components/homepage/dishes-per-restaurant';
 import FeaturedDishes from '@/components/homepage/featuredDishes';
@@ -7,18 +7,16 @@ import RestaurantLists from '@/components/homepage/restaurantLists';
 import { Colors } from '@/constants/Colors';
 import { restaurantsList } from '@/constants/data';
 import { AntDesign } from '@expo/vector-icons';
-import { StyleSheet, TextInput, View, Text, ScrollView, TouchableOpacity, useWindowDimensions } from 'react-native';
+import { StyleSheet, TextInput, View, Text, FlatList, useWindowDimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-
 export default function HomeScreen() {
-
-  const {width} = useWindowDimensions()
+  const { width } = useWindowDimensions();
   const styles = StyleSheet.create({
     inputContainer: {
       marginLeft: 17,
       marginTop: 20,
-      position: "relative"
+      position: 'relative',
     },
     textInput: {
       backgroundColor: Colors.light.search,
@@ -27,42 +25,52 @@ export default function HomeScreen() {
       borderRadius: 10,
       paddingLeft: 35,
       color: Colors.light.text,
-      fontWeight: 300
+      fontWeight: '300',
     },
     icon: {
-      position: "absolute",
+      position: 'absolute',
       top: 19,
       left: 10,
-      zIndex: 999
-    }
-  })
+      zIndex: 999,
+    },
+  });
+
   return (
-   <SafeAreaView style={{flex: 1}} className='flex-1 max-h-[690px]'>
-    <ScrollView>
-     <Header />
-      <View style={styles.inputContainer} className="">
-      <AntDesign style={styles.icon} name="search1" size={16} color="gray" />
-        <TextInput placeholder="Search dishes, restaurants" style={styles.textInput} />
-      </View>
-      <View className='mt-5'>
-        <Categories />
-      </View>
-      <View className='mt-5'>
-        <RestaurantLists />
-      </View>
-     <View className='mt-10'>
-     {
-      restaurantsList.map((item) => (
-        <View key={item.id} className='-mt-6'>
-        <DishesPerRestaurantList data={item} />
-      </View>
-      ))
-     }
-     </View>
-     <View className='mt-5'>
-        <FeaturedDishes />
-      </View>
-    </ScrollView>
-   </SafeAreaView>
-  )
+    <SafeAreaView style={{ flex: 1, paddingBottom: 80 }}>
+      <FlatList
+        data={restaurantsList}
+        keyExtractor={(item) => item.id.toString()}
+        ListHeaderComponent={
+          <View>
+            <Header />
+            <View style={styles.inputContainer}>
+              <AntDesign style={styles.icon} name="search1" size={16} color="gray" />
+              <TextInput placeholder="Search dishes, restaurants" style={styles.textInput} />
+            </View>
+            <View className="mt-5">
+              <Categories />
+            </View>
+            <View className="mt-5">
+              <RestaurantLists />
+            </View>
+          </View>
+        }
+        renderItem={({ item }) => (
+          <View key={item.id} className="mt-7 -mb-11">
+            <DishesPerRestaurantList data={item} />
+          </View>
+        )}
+        ListFooterComponent={
+          <View>
+            <View className="mt-5">
+              <FeaturedDishes />
+            </View>
+            <View className="mt-5">
+              <AllRestauants />
+            </View>
+          </View>
+        }
+      />
+    </SafeAreaView>
+  );
 }
