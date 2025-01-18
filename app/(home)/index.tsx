@@ -1,6 +1,7 @@
 
 import Categories from '@/components/homepage/ategories';
 import DishesPerRestaurantList from '@/components/homepage/dishes-per-restaurant';
+import FeaturedDishes from '@/components/homepage/featuredDishes';
 import Header from '@/components/homepage/header';
 import RestaurantLists from '@/components/homepage/restaurantLists';
 import { Colors } from '@/constants/Colors';
@@ -58,6 +59,9 @@ export default function HomeScreen() {
       ))
      }
      </View>
+     <View className='mt-5'>
+        <FeaturedDishes />
+      </View>
     </ScrollView>
    </SafeAreaView>
   )

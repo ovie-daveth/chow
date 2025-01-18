@@ -1,12 +1,14 @@
 import {View, Text, FlatList, useWindowDimensions, StyleSheet, TouchableOpacity, Image} from "react-native"
 import Listheader from "./listheader"
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Colors } from "@/constants/Colors";
 
 interface Dish {
     name: string;
     amount: number; // Price of the dish
     rating: number; // Rating out of 5
-    image: string
+    image: string;
+    noofrate: number
   }
   
   interface Restaurant {
@@ -61,6 +63,11 @@ const DishesPerRestaurantList = ({data}: Prop) => {
           tagText: {
             color: 'gray',
           },
+          ratebg: {
+            backgroundColor: Colors.light.search,
+            padding: 5,
+            borderRadius: 100
+          }
         });
     return (
         <View className="px-5">
@@ -90,9 +97,9 @@ const DishesPerRestaurantList = ({data}: Prop) => {
                     <View className="flex items-center gap-2 flex-row">
                       <Text className="text-sm">#2,500</Text>
                     </View>
-                    <View className="flex items-center flex-row gap-1">
+                    <View style={styles.ratebg} className="flex items-center flex-row gap-1 ">
                         <AntDesign name="staro" size={15} color="orange" />
-                        <Text className="text-sm">3.5</Text>
+                        <Text className="text-sm"><Text className="font-semibold">{item.rating}</Text> ({item.noofrate})</Text>
                     </View>
                   </View>
                   </View>

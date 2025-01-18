@@ -3,12 +3,21 @@ import React from 'react'
 import { Colors } from '@/constants/Colors'
 import { AntDesign } from '@expo/vector-icons'
 
-const Listheader = ({title, onPress}: {title: string, onPress?: () => void}) => {
+const Listheader = ({icon, title, onPress}: {icon?: any, title: string, onPress?: () => void}) => {
   return (
       <View style={styles.header}>
-            <Text style={styles.headerText}>{title}</Text>
+        <View className='flex flex-row items-center gap-1'>
+        <Text style={styles.headerText}>{title}</Text>
+          {
+            icon && icon
+          }
+        </View>
+       
             <TouchableOpacity onPress={onPress} activeOpacity={0.7} style={styles.viewAllButton}>
-              <Text style={styles.viewAllText}>View All</Text>
+              
+                <Text style={styles.viewAllText}>View All</Text>
+                
+           
               <AntDesign name="right" size={15} color="black" />
             </TouchableOpacity>
           </View>

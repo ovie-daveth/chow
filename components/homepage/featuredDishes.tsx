@@ -1,11 +1,10 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, useWindowDimensions } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Listheader from './listheader'
-import { restaurantsList } from '@/constants/data'
+import { featuredDishes } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
-import { Colors } from '@/constants/Colors'
 
-const RestaurantLists = () => {
+const FeaturedDishes = () => {
 
     const { width } = useWindowDimensions();
     const styles = StyleSheet.create({
@@ -13,7 +12,7 @@ const RestaurantLists = () => {
         paddingHorizontal: 10,
       },
       content: {
-        marginRight: 10,
+        marginRight: 5,
         paddingLeft: 0,
         display: 'flex',
         flexDirection: 'column',
@@ -32,27 +31,30 @@ const RestaurantLists = () => {
       tag: {
         marginLeft: 5,
       },
-       ratebg: {
-                  backgroundColor: Colors.light.search,
-                  padding: 5,
-                  borderRadius: 100
-                },
       addedon: {
         marginTop: 10,
-        gap: 10,
+        justifyContent: "space-between",
+        width: width / 1.28,
+        paddingRight: 20
       },
       tagText: {
         color: 'gray',
       },
     });
+
+
+    const [like, setLike] = useState<number | null>(null)
+    const handleFavorite = (id: number) => {
+        setLike(id)
+    }
     
     return (
       <View style={styles.container}>
-        <Listheader title="All Restaurants" />
+        <Listheader icon={<MaterialCommunityIcons name="puzzle-star" size={18} color="orange" />} title="Featured" />
         <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
-          data={restaurantsList}
+          data={featuredDishes}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
             return (
@@ -71,29 +73,28 @@ const RestaurantLists = () => {
                   <Text style={styles.tag} className="font-medium text-xl tracking-wider">
                     {item.name}
                   </Text>
-                  <View style={styles.tag} className="flex flex-row items-center gap-5">
-                    {item.tags.map((tag, idx) => (
-                      <Text
-                        style={styles.tagText}
-                        key={idx}
-                        className="font-light text-sm tracking-wider"
-                      >
-                        {tag}
-                      </Text>
-                    ))}
-                  </View>
-                  <View style={styles.addedon} className="flex items-center gap-5 flex-row justify-between">
-                    <View style={styles.ratebg} className="flex items-center gap-2 flex-row">
+                  <View style={styles.addedon} className="flex items-center flex-row justify-between">
+                    <View className='flex flex-row items-center gap-5'>
+                    <View className="flex items-center gap-2 flex-row">
                       <AntDesign name="staro" size={15} color="orange" />
-                      <Text className="text-sm">{item.ratings} ({item.noofrate})</Text>
+                      <Text>{item.rating}</Text>
                     </View>
                     <View className="flex items-center flex-row gap-2">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className="text-sm">{item.deliveryType}</Text>
+                      <Text>{item.deliveryType}</Text>
                     </View>
                     <View className="flex items-center gap-2 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
-                      <Text className="text-sm">{item.timeOfDelivery}</Text>
+                      <Text>{item.timeOfDelivery}</Text>
+                    </View>
+                    </View>
+                    <View>
+                    {/* */}
+                    <TouchableOpacity activeOpacity={0.7} onPress={() => handleFavorite(item.id)}>
+                        {
+                            like === item.id ? <AntDesign name="heart" size={18} color="red" />  : <AntDesign name="hearto" size={18} color="black" />
+                        }
+                    </TouchableOpacity>
                     </View>
                   </View>
                   </View>
@@ -108,4 +109,4 @@ const RestaurantLists = () => {
   
 }
 
-export default RestaurantLists
+export default FeaturedDishes
