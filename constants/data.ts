@@ -85,11 +85,11 @@ export const categories = [
       noofrate: 13,
       ratings: 4.5,
       timeOfDelivery: "30-45 mins",
-      deliveryType: "From #1,200",
+      deliveryType: "1200",
       dishes: [
-        { name: "Cheese Pizza", amount: 12.99, noofrate: 102, rating: 4.7, image: food4},
-        { name: "BBQ Chicken Wings", amount: 9.99, noofrate: 102, rating: 4.6, image: food3 },
-        { name: "Caesar Salad", amount: 8.99, noofrate: 102, rating: 4.3, image: food1}
+        { name: "Cheese Pizza", amount: 1299, noofrate: 102, rating: 4.7, image: food4},
+        { name: "BBQ Chicken Wings", amount: 999, noofrate: 102, rating: 4.6, image: food3 },
+        { name: "Caesar Salad", amount: 899, noofrate: 102, rating: 4.3, image: food1}
       ],
     },
     {
@@ -104,11 +104,11 @@ export const categories = [
       noofrate: 13,
       ratings: 4.7,
       timeOfDelivery: "40-55 mins",
-      deliveryType: "#12,000",
+      deliveryType: "12000",
       dishes: [
-        { name: "Grilled Salmon", amount: 15.99, noofrate: 102, rating: 4.8, image: food1 },
-        { name: "Lobster Bisque", amount: 12.49, noofrate: 102, rating: 4.7, image: food2 },
-        { name: "Fried Calamari", amount: 10.99, noofrate: 102, rating: 4.5, image: food3 },
+        { name: "Grilled Salmon", amount: 1599, noofrate: 102, rating: 4.8, image: food1 },
+        { name: "Lobster Bisque", amount: 1249, noofrate: 102, rating: 4.7, image: food2 },
+        { name: "Fried Calamari", amount: 1099, noofrate: 102, rating: 4.5, image: food3 },
       ],
     },
     {
@@ -123,11 +123,11 @@ export const categories = [
       noofrate: 1332,
       ratings: 4.3,
       timeOfDelivery: "20-30 mins",
-      deliveryType: "Free",
+      deliveryType: "0",
       dishes: [
-        { name: "Cappuccino", amount: 4.99, noofrate: 102, rating: 4.6, image: food1 },
-        { name: "Blueberry Muffin", amount: 3.49, noofrate: 102, rating: 4.4, image: food4 },
-        { name: "Chocolate Croissant", amount: 3.99, noofrate: 102, rating: 4.5, image: food2 },
+        { name: "Cappuccino", amount: 499, noofrate: 102, rating: 4.6, image: food1 },
+        { name: "Blueberry Muffin", amount: 349, noofrate: 102, rating: 4.4, image: food4 },
+        { name: "Chocolate Croissant", amount: 399, noofrate: 102, rating: 4.5, image: food2 },
       ],
     },
     {
@@ -142,11 +142,11 @@ export const categories = [
       noofrate: 13,
       ratings: 4.8,
       timeOfDelivery: "50-65 mins",
-      deliveryType: "Paid",
+      deliveryType: "1300",
       dishes: [
-        { name: "Butter Chicken", amount: 13.99, noofrate: 102, rating: 4.9, image: food1 },
-        { name: "Vegetable Biryani", amount: 10.99, noofrate: 102, rating: 4.8, image: food2 },
-        { name: "Garlic Naan", amount: 2.99, noofrate: 102, rating: 4.7, image: food3 }
+        { name: "Butter Chicken", amount: 1399, noofrate: 102, rating: 4.9, image: food1 },
+        { name: "Vegetable Biryani", amount: 1099, noofrate: 102, rating: 4.8, image: food2 },
+        { name: "Garlic Naan", amount: 299, noofrate: 102, rating: 4.7, image: food3 }
       ],
     },
     {
@@ -161,11 +161,11 @@ export const categories = [
       noofrate: 13,
       ratings: 4.6,
       timeOfDelivery: "25-35 mins",
-      deliveryType: "Free",
+      deliveryType: "0",
       dishes: [
-        { name: "Quinoa Salad", amount: 9.99, noofrate: 102, rating: 4.7, image: food3},
-        { name: "Avocado Toast", amount: 7.49, noofrate: 102, rating: 4.6, image: food1},
-        { name: "Berry Smoothie Bowl", amount: 8.99, noofrate: 102, rating: 4.8, image: food4 },
+        { name: "Quinoa Salad", amount: 999, noofrate: 102, rating: 4.7, image: food3},
+        { name: "Avocado Toast", amount: 749, noofrate: 102, rating: 4.6, image: food1},
+        { name: "Berry Smoothie Bowl", amount: 899, noofrate: 102, rating: 4.8, image: food4 },
       ],
     },
   ];
@@ -176,33 +176,33 @@ export const categories = [
       {
         "id": 1,
         "name": "Cheese Pizza",
-        "amount": 12.99,
+        "amount": 1299,
         "noofrate": 123,
         "rating": 4.7,
         "image": food1,
-        "deliveryType": "Free",
+        "deliveryType": "0",
         "timeOfDelivery": "20-25min",
         "restaurant": "Rose Garden Restaurants"
       },
       {
         "id": 2,
         "name": "Grilled Salmon",
-        "amount": 15.99,
+        "amount": 1599,
         "noofrate": 123,
         "rating": 4.8,
         "image": food2,
-        "deliveryType": "Paid",
+        "deliveryType": "1300",
         "timeOfDelivery": "20-25min",
         "restaurant": "Ocean Breeze Diner"
       },
       {
         "id": 3,
         "name": "Cappuccino",
-        "amount": 4.99,
+        "amount": 499,
         "noofrate": 123,
         "rating": 4.6,
         "image": food3,
-        "deliveryType": "Free",
+        "deliveryType": "0",
         "timeOfDelivery": "20-25min",
         "restaurant": "Mountain View Cafe"
       },
@@ -213,18 +213,18 @@ export const categories = [
         "noofrate": 123,
         "rating": 4.9,
         "image": food4,
-        "deliveryType": "Paid",
+        "deliveryType": "1300",
         "timeOfDelivery": "20-25min",
         "restaurant": "Spice Route Kitchen"
       },
       {
         "id": 5,
         "name": "Berry Smoothie Bowl",
-        "amount": 8.99,
+        "amount": 899,
         "noofrate": 123,
         "rating": 4.8,
         "image": food1,
-        "deliveryType": "Free",
+        "deliveryType": "0",
         "timeOfDelivery": "20-25min",
         "restaurant": "The Green Bowl"
       }

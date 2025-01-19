@@ -4,6 +4,7 @@ import Listheader from './listheader'
 import { restaurantsList } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors'
+import { formatCurrency } from '@/helpers/format-currency'
 
 const AllRestauants = () => {
 
@@ -14,7 +15,7 @@ const AllRestauants = () => {
         marginTop: 14
       },
       content: {
-        marginBottom: 10,
+        marginBottom: 30,
         paddingLeft: 0,
         display: 'flex',
         flexDirection: 'column',
@@ -45,6 +46,14 @@ const AllRestauants = () => {
       tagText: {
         color: 'gray',
       },
+      addedonText: {
+        color: "#C2410C",
+        fontWeight: 600,
+        fontSize: 12,
+      },
+      addtext: {
+        fontSize: 12
+      }
     });
     
     return (
@@ -86,18 +95,19 @@ const AllRestauants = () => {
 </View>
 
                   <View style={styles.addedon} className="flex items-center gap-5 flex-row justify-between">
-                    <View style={styles.ratebg} className="flex items-center gap-2 flex-row">
+                    <View style={styles.ratebg} className="flex items-center gap-1 flex-row">
                       <AntDesign name="staro" size={15} color="orange" />
-                      <Text className="text-sm">{item.ratings} ({item.noofrate})</Text>
+                      <Text style={styles.addtext} className="text-sm">{item.ratings} ({item.noofrate})</Text>
                     </View>
-                    <View className="flex items-center flex-row gap-2">
+                    <View className="flex items-center flex-row gap-1">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className="text-sm">{item.deliveryType}</Text>
+                      <Text style={styles.addtext} className="text-sm">{item.deliveryType == "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
                     </View>
-                    <View className="flex items-center gap-2 flex-row">
+                    <View className="flex items-center gap-1 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
-                      <Text className="text-sm">{item.timeOfDelivery}</Text>
+                      <Text style={styles.addtext} className="text-sm">{item.timeOfDelivery}</Text>
                     </View>
+                      <Text style={styles.addedonText} className='bg-orange-600'>Closed</Text>
                   </View>
                   </View>
                 </TouchableOpacity>

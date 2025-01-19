@@ -2,6 +2,7 @@ import {View, Text, FlatList, useWindowDimensions, StyleSheet, TouchableOpacity,
 import Listheader from "./listheader"
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
+import { formatCurrency } from "@/helpers/format-currency";
 
 interface Dish {
     name: string;
@@ -67,6 +68,9 @@ const DishesPerRestaurantList = ({data}: Prop) => {
             backgroundColor: Colors.light.search,
             padding: 5,
             borderRadius: 100
+          },
+          addText: {
+            fontSize: 10
           }
         });
     return (
@@ -90,16 +94,16 @@ const DishesPerRestaurantList = ({data}: Prop) => {
                     resizeMode="contain"
                   />
                   <View style={{paddingHorizontal: 5}}>
-                  <Text style={styles.tag} className="font-medium text-sm tracking-wider">
+                  <Text style={styles.addText} style={styles.tag} className="font-medium text-sm tracking-wider">
                     {item.name}
                   </Text>
                   <View style={styles.addedon} className="flex items-center flex-row justify-betwee">
                     <View className="flex items-center gap-2 flex-row">
-                      <Text className="text-sm">#2,500</Text>
+                      <Text style={styles.addText} className="text-sm">{formatCurrency(2900)}</Text>
                     </View>
                     <View style={styles.ratebg} className="flex items-center flex-row gap-1 ">
                         <AntDesign name="staro" size={15} color="orange" />
-                        <Text className="text-sm"><Text className="font-semibold">{item.rating}</Text> ({item.noofrate})</Text>
+                        <Text style={styles.addText} className="text-sm"><Text className="font-semibold">{item.rating}</Text> ({item.noofrate})</Text>
                     </View>
                   </View>
                   </View>

@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   active: {
-    backgroundColor: "#E68A2F",
+    backgroundColor: "#E6A042",
   },
   inactive: {
     backgroundColor: '#eee',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E8E8E8"
   },
   imageContainerActive: {
-    backgroundColor: "#FFB84C"
+    backgroundColor: "#eee"
   },
   image: {
     borderRadius: 100,

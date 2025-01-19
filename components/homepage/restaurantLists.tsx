@@ -4,6 +4,7 @@ import Listheader from './listheader'
 import { restaurantsList } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors'
+import { formatCurrency } from '@/helpers/format-currency'
 
 const RestaurantLists = () => {
 
@@ -45,7 +46,8 @@ const RestaurantLists = () => {
       },
       addedonText: {
         color: "#C2410C",
-        fontWeight: 600
+        fontWeight: 600,
+        fontSize: 12,
       },
       tagText: {
         color: 'gray',
@@ -101,7 +103,7 @@ const RestaurantLists = () => {
                     </View>
                     <View className="flex items-center flex-row gap-1">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className="text-sm">{item.deliveryType}</Text>
+                      <Text className="text-sm">{item.deliveryType == "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
                     </View>
                     <View className="flex items-center gap-1 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
