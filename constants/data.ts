@@ -84,6 +84,8 @@ export const categories = [
       tags: ["burger", "chicken", "wings", "salad"],
       noofrate: 13,
       ratings: 4.5,
+      isFavourite: true,
+      isDeliveryNow: true,
       timeOfDelivery: "30-45 mins",
       deliveryType: "1200",
       dishes: [
@@ -103,6 +105,8 @@ export const categories = [
       tags: ["seafood", "grill", "fish", "lobster"],
       noofrate: 13,
       ratings: 4.7,
+      isFavourite: true,
+      isDeliveryNow: false,
       timeOfDelivery: "40-55 mins",
       deliveryType: "12000",
       dishes: [
@@ -122,6 +126,8 @@ export const categories = [
       tags: ["coffee", "pastries", "desserts", "breakfast"],
       noofrate: 1332,
       ratings: 4.3,
+      isFavourite: true,
+      isDeliveryNow: false,
       timeOfDelivery: "20-30 mins",
       deliveryType: "0",
       dishes: [
@@ -141,6 +147,8 @@ export const categories = [
       tags: ["curry", "naan", "spicy", "vegetarian"],
       noofrate: 13,
       ratings: 4.8,
+      isFavourite: false,
+      isDeliveryNow: false,
       timeOfDelivery: "50-65 mins",
       deliveryType: "1300",
       dishes: [
@@ -160,6 +168,8 @@ export const categories = [
       tags: ["salads", "healthy", "vegan", "organic"],
       noofrate: 13,
       ratings: 4.6,
+      isFavourite: true,
+      isDeliveryNow: true,
       timeOfDelivery: "25-35 mins",
       deliveryType: "0",
       dishes: [

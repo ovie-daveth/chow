@@ -1,7 +1,9 @@
 import { View, Text, TouchableNativeFeedback, StyleSheet, useWindowDimensions } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import PageHeader from "@/components/molecules/pageHeader";
 import AllRestauants from "@/components/homepage/AllRestauants";
+import { Colors } from "@/constants/Colors";
+import Search from "@/components/atoms/search";
 
 const button: any = [
   {
@@ -20,32 +22,38 @@ const button: any = [
 const Restaurants = () => {
 
   const { width } = useWindowDimensions()
-  const onPressHandler = () => {
-    console.log("Button pressed!");
+
+  const [state, setState] = useState<string>("")
+  const [isActive, setIsActive] = useState<number | null>(null)
+  
+  const onPressHandler = (item: string, idx: number) => {
+    setState(item)
+    setIsActive(idx)
   };
 
   return (
-    <View className="pt-5" style={{flex: 1, paddingBottom: 150 }}>
+    <View className="pt-5" style={{flex: 1 }}>
       <PageHeader showLocation title={"Restaurants"} icon="left" />
-      <View className="flex flex-row items-center gap-3 mt-5">
+      <Search placeholder="Search for a restaurant" />
+      <View className="flex flex-row items-center gap-3 mt-8 pl-3">
         {button.map((item: { title: string }, idx: any) => (
           <TouchableNativeFeedback
-          style={styles.touchable}
+          style={[styles.touchable]}
             key={idx}
-            onPress={onPressHandler}
+            onPress={() => onPressHandler(item.title, idx)}
             background={TouchableNativeFeedback.Ripple(
               "rgba(0, 0, 0, 0.2)",
               false,
             )}
           >
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>{item?.title}</Text>
+            <View style={[styles.button, isActive === idx && styles.isActive]}>
+              <Text style={[styles.buttonText,isActive === idx && styles.isActiveText ]}>{item?.title}</Text>
             </View>
           </TouchableNativeFeedback>
         ))}
       </View>
-      <View>
-        <AllRestauants />
+      <View className="mt-5" style={{paddingBottom: 230}}>
+        <AllRestauants state={state} />
       </View>
     </View>
   );
@@ -71,5 +79,11 @@ const styles = StyleSheet.create({
   },
   touchable: {
     borderRadius: 100
+  },
+  isActive: {
+    backgroundColor: Colors.light.buttons
+  },
+  isActiveText: {
+    color: "#000"
   }
 });

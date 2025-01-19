@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Listheader from './listheader'
 import { featuredDishes } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
+import { formatCurrency } from '@/helpers/format-currency'
 
 const FeaturedDishes = () => {
 
@@ -84,7 +85,7 @@ const FeaturedDishes = () => {
                     </View>
                     <View className="flex items-center flex-row gap-2">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className='text-sm'>{item.deliveryType}</Text>
+                      <Text className='text-sm'>{item.deliveryType === "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
                     </View>
                     <View className="flex items-center gap-2 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />

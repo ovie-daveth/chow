@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'; 
 import { Colors } from '@/constants/Colors';
 
 const styles = StyleSheet.create({
