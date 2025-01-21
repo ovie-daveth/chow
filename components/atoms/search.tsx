@@ -1,26 +1,29 @@
-import { StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TextInput, TouchableOpacity, useWindowDimensions, View } from 'react-native'
+import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors';
+import { router } from 'expo-router';
 
 const Search = ({placeholder, value}: {placeholder: string, value?: string}) => {
 
     const {width} = useWindowDimensions()
+    const [isOpen, setIsOpen] = useState(false)
 
     const styles = StyleSheet.create({
         inputContainer: {
           marginLeft: 10,
           marginTop: 20,
           position: 'relative',
-        },
-        textInput: {
           backgroundColor: Colors.light.search,
           width: width / 1.07,
           height: 55,
           borderRadius: 10,
           paddingLeft: 35,
+        },
+        textInput: {
           color: Colors.light.text,
           fontWeight: '300',
+          paddingTop: 17
         },
         icon: {
           position: 'absolute',
@@ -29,11 +32,15 @@ const Search = ({placeholder, value}: {placeholder: string, value?: string}) => 
           zIndex: 999,
         },
       });
+
+      const handlePress = () => {
+        router.push("/(asides)/search")
+      }
   return (
-    <View style={styles.inputContainer}>
+    <TouchableOpacity onPress={handlePress} activeOpacity={0.7} style={styles.inputContainer}>
               <AntDesign style={styles.icon} name="search1" size={16} color="gray" />
-              <TextInput placeholder={placeholder} style={styles.textInput} />
-            </View>
+              <Text style={styles.textInput}>{placeholder}</Text>
+            </TouchableOpacity>
   )
 }
 

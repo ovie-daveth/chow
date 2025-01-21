@@ -1,9 +1,10 @@
-import { View, Text, TouchableNativeFeedback, StyleSheet, useWindowDimensions } from "react-native";
+import { View, Text, TouchableNativeFeedback, StyleSheet, useWindowDimensions, TextInput } from "react-native";
 import React, { useState } from "react";
 import PageHeader from "@/components/molecules/pageHeader";
 import AllRestauants from "@/components/homepage/AllRestauants";
 import { Colors } from "@/constants/Colors";
 import Search from "@/components/atoms/search";
+import { AntDesign } from "@expo/vector-icons";
 
 const button: any = [
   {
@@ -34,7 +35,10 @@ const Restaurants = () => {
   return (
     <View className="pt-5" style={{flex: 1 }}>
       <PageHeader showLocation title={"Restaurants"} icon="left" />
-      <Search placeholder="Search for a restaurant" />
+      <View style={styles.inputContainer}>
+            <AntDesign style={styles.icon} name="search1" size={16} color="gray" />
+            <TextInput placeholder={"Search for a restaurant"} style={styles.textInput} />
+        </View>
       <View className="flex flex-row items-center gap-3 mt-8 pl-3">
         {button.map((item: { title: string }, idx: any) => (
           <TouchableNativeFeedback
@@ -67,6 +71,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+   inputContainer: {
+            marginLeft: 10,
+            marginTop: 20,
+            position: 'relative',
+            backgroundColor: Colors.light.search,
+             width: "93%",
+            height: 55,
+            borderRadius: 10,
+            paddingLeft: 35,
+          },
+          textInput: {
+            color: Colors.light.text,
+            fontWeight: '300',
+            paddingTop: 17
+          },
+          icon: {
+            position: 'absolute',
+            top: 19,
+            left: 10,
+            zIndex: 999,
+          },
   button: {
     backgroundColor: "#eee",
     paddingHorizontal: 10,
