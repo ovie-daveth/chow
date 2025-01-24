@@ -1,8 +1,9 @@
-import {View, Text, FlatList, useWindowDimensions, StyleSheet, TouchableOpacity, Image} from "react-native"
+import {View, Text, FlatList, useWindowDimensions, StyleSheet, TouchableOpacity, Image, useColorScheme} from "react-native"
 import Listheader from "./listheader"
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { formatCurrency } from "@/helpers/format-currency";
+import { useTheme } from "@/contexts/themeContext";
 
 interface Dish {
     name: string;
@@ -28,6 +29,8 @@ interface Prop {
 }
 const DishesPerRestaurantList = ({data}: Prop) => {
 
+  const colorSchema = useColorScheme()
+  const { theme } = useTheme();
         const { width } = useWindowDimensions();
         const styles = StyleSheet.create({
           container: {
@@ -40,9 +43,10 @@ const DishesPerRestaurantList = ({data}: Prop) => {
             flexDirection: 'column',
             borderRadius: 10,
             gap: 10,
-            height: 200, // Set a fixed height for consistency
+            height: 160, // Set a fixed height for consistency
             width: width / 2.5, // Adjust width as needed // Optional: Add background to visualize layout
             padding: 0,
+            backgroundColor: colorSchema === "dark" ? theme.input.background : ""
           },
           image: {
             borderRadius: 10,
@@ -52,6 +56,17 @@ const DishesPerRestaurantList = ({data}: Prop) => {
           },
           tag: {
             marginLeft: 5,
+            color: theme.text
+          },
+          addIcon: {
+            bottom: 33,
+            right: 5,
+            backgroundColor: colorSchema === "dark" ? theme.secondary : theme.primary,
+            borderRadius: 100,
+            width: 25,
+            height: 25,
+            alignItems: "center",
+            justifyContent: "center"
           },
           addedon: {
             marginTop: 10,
@@ -62,15 +77,16 @@ const DishesPerRestaurantList = ({data}: Prop) => {
             paddingRight: 15
           },
           tagText: {
-            color: 'gray',
+            color: theme.text,
           },
           ratebg: {
-            backgroundColor: Colors.light.search,
+            backgroundColor: theme.input.background,
             padding: 5,
             borderRadius: 100
           },
           addText: {
-            fontSize: 10
+            fontSize: 10,
+            color: theme.text
           }
         });
     return (
@@ -86,15 +102,18 @@ const DishesPerRestaurantList = ({data}: Prop) => {
                 <TouchableOpacity
                   activeOpacity={0.7}
                   onPress={() => {}}
-                  className="mx-5 flex-column items-start"
+                  className="mx-5 flex-column items-start relative"
                 >
                   <Image
-                    source={item.image}
+                    source={item.image as any}
                     style={styles.image}
                     resizeMode="contain"
                   />
+                   <TouchableOpacity activeOpacity={0.9} style={styles.addIcon} className='absolute bottom-30 right-10'>
+                  <AntDesign  name="plus" size={15} color={colorSchema === "light" ? theme.background : theme.text} />
+                  </TouchableOpacity>
                   <View style={{paddingHorizontal: 5}}>
-                  <Text style={styles.addText} style={styles.tag} className="font-medium text-sm tracking-wider">
+                  <Text style={[styles.addText, styles.tag]} className="font-medium text-sm tracking-wider">
                     {item.name}
                   </Text>
                   <View style={styles.addedon} className="flex items-center flex-row justify-betwee">

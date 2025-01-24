@@ -5,8 +5,11 @@ import { restaurantsList } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors'
 import { formatCurrency } from '@/helpers/format-currency'
+import { useTheme } from '@/contexts/themeContext'
 
 const RestaurantLists = () => {
+
+  const { theme } = useTheme();
 
     const { width } = useWindowDimensions();
     const styles = StyleSheet.create({
@@ -32,14 +35,17 @@ const RestaurantLists = () => {
       },
       tag: {
         marginLeft: 5,
+        color: theme.input.text,
       },
        ratebg: {
-                  backgroundColor: Colors.light.search,
+                  backgroundColor: theme.input.background,
                   padding: 5,
                   borderRadius: 100
                 },
                 addedonContainer: {
                   marginTop: 10,
+                  justifyContent: "space-between",
+                  width: width / 1.1
                 },
       addedon: {
         gap: 10,
@@ -72,7 +78,7 @@ const RestaurantLists = () => {
                   className="mx-5 flex-column items-start"
                 >
                   <Image
-                    source={item.image}
+                    source={item.image as any}
                     style={styles.image}
                     resizeMode="cover"
                   />
@@ -95,19 +101,19 @@ const RestaurantLists = () => {
                     ))}
                   </View>
 
-                  <View style={styles.addedonContainer} className="flex items-center gap-5 flex-row justify-between">
+                  <View style={styles.addedonContainer} className="flex items-center flex-row">
                     <View style={styles.addedon} className="flex items-center gap-3 flex-row justify-between">
                     <View style={styles.ratebg} className="flex items-center gap-1 flex-row">
                       <AntDesign name="staro" size={15} color="orange" />
-                      <Text className="text-sm">{item.ratings} ({item.noofrate})</Text>
+                      <Text style={{color: theme.input.text}} className="text-sm">{item.ratings} ({item.noofrate})</Text>
                     </View>
                     <View className="flex items-center flex-row gap-1">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className="text-sm">{item.deliveryType == "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
+                      <Text style={{color: theme.input.text}} className="text-sm">{item.deliveryType == "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
                     </View>
                     <View className="flex items-center gap-1 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
-                      <Text className="text-sm">{item.timeOfDelivery}</Text>
+                      <Text style={{color: theme.input.text}} className="text-sm">{item.timeOfDelivery}</Text>
                     </View>
                     </View>
                     <View>

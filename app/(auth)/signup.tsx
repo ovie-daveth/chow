@@ -6,13 +6,20 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  Appearance,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/atoms/buttons';
 import { Link, router } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import { useTheme } from '@/contexts/themeContext';
 
 const SignUp = () => {
+
+  const { theme } = useTheme();
+     const colorScheme = Appearance.getColorScheme()
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -78,6 +85,7 @@ const SignUp = () => {
 
   return (
     <SafeAreaView>
+      <StatusBar style='light' backgroundColor={"#000"} />
       <ScrollView>
         <View className="h-[200px] bg-[#000] flex flex-row items-start justify-between">
           <View className="mt-5 ml-5">
@@ -174,7 +182,7 @@ const SignUp = () => {
             {/* Redirect to Login */}
             <View className="flex flex-row justify-center gap-2 mt-2">
               <Text className="text-gray-400">Already have an account?</Text>
-              <Link className="text-[#FFB84C]" href="/(auth)/login">
+              <Link style={{color: theme.link.text}} className="text-[#FFB84C]" href="/(auth)/login">
                 Login
               </Link>
             </View>

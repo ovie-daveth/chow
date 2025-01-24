@@ -7,15 +7,16 @@ import Header from '@/components/homepage/header';
 import RestaurantLists from '@/components/homepage/restaurantLists';
 import { Colors } from '@/constants/Colors';
 import { restaurantsList } from '@/constants/data';
+import { useTheme } from '@/contexts/themeContext';
 import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet, TextInput, View, Text, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
-  
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingBottom: 80 }}>
+    <SafeAreaView style={{ flex: 1, paddingBottom: 80, backgroundColor: theme.background }}>
       <FlatList
         data={restaurantsList}
         keyExtractor={(item) => item.id.toString()}
@@ -32,7 +33,7 @@ export default function HomeScreen() {
           </View>
         }
         renderItem={({ item }) => (
-          <View key={item.id} className="mt-7 -mb-11">
+          <View key={item.id} className="mt-7 mb-2">
             <DishesPerRestaurantList data={item} />
           </View>
         )}

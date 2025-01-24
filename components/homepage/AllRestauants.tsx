@@ -7,9 +7,10 @@ import { Colors } from '@/constants/Colors'
 import { formatCurrency } from '@/helpers/format-currency'
 import {router} from "expo-router"
 import Addendons from '../restaurants/addedons'
+import { useTheme } from '@/contexts/themeContext'
 
 const AllRestauants = ({state}: {state: string}) => {
-
+  const { theme } = useTheme();
     const { width } = useWindowDimensions();
     const [data, setData] = useState<any[]>(restaurantsList)
     const styles = StyleSheet.create({
@@ -36,9 +37,10 @@ const AllRestauants = ({state}: {state: string}) => {
       },
       tag: {
         marginLeft: 5,
+        color: theme.text
       },
        ratebg: {
-                  backgroundColor: Colors.light.search,
+                  backgroundColor: theme.input.background,
                   padding: 5,
                   borderRadius: 100
                 },
@@ -47,7 +49,7 @@ const AllRestauants = ({state}: {state: string}) => {
         gap: 10,
       },
       tagText: {
-        color: 'gray',
+        color: theme.input.text,
       },
       addedonText: {
         color: "#C2410C",

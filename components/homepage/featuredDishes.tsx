@@ -4,8 +4,10 @@ import Listheader from './listheader'
 import { featuredDishes } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { formatCurrency } from '@/helpers/format-currency'
+import { useTheme } from '@/contexts/themeContext'
 
 const FeaturedDishes = () => {
+  const { theme } = useTheme();
 
     const { width } = useWindowDimensions();
     const styles = StyleSheet.create({
@@ -29,8 +31,19 @@ const FeaturedDishes = () => {
         height: 170, // Ensure consistent image height
         width: '100%', // Make image responsive to container width
       },
+      addIcon: {
+        bottom: 72,
+        right: 0,
+        backgroundColor: theme.secondary,
+        borderRadius: 100,
+        width: 40,
+        height: 40,
+        alignItems: "center",
+        justifyContent: "center"
+      },
       tag: {
         marginLeft: 5,
+        color: theme.text
       },
       addedon: {
         marginTop: 5,
@@ -63,13 +76,16 @@ const FeaturedDishes = () => {
                 <TouchableOpacity
                   activeOpacity={0.7}
                   onPress={() => {}}
-                  className="mx-5 flex-column items-start"
+                  className="mx-5 flex-column items-start relative"
                 >
                   <Image
                     source={item.image}
                     style={styles.image}
                     resizeMode="cover"
                   />
+                  <TouchableOpacity activeOpacity={0.9} style={styles.addIcon} className='absolute bottom-30 right-10'>
+                  <AntDesign  name="plus" size={15} color={theme.text} />
+                  </TouchableOpacity>
                   <View style={{paddingHorizontal: 5}}>
                   <Text style={styles.tag} className="font-medium text-xl tracking-wider">
                     {item.name}
@@ -81,22 +97,22 @@ const FeaturedDishes = () => {
                     <View className='flex flex-row items-center gap-5'>
                     <View className="flex items-center gap-2 flex-row">
                       <AntDesign name="staro" size={15} color="orange" />
-                      <Text className='text-sm'>{item.rating}</Text>
+                      <Text style={{color: theme.input.text}} className='text-sm'>{item.rating}</Text>
                     </View>
                     <View className="flex items-center flex-row gap-2">
                       <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text className='text-sm'>{item.deliveryType === "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
+                      <Text style={{color: theme.input.text}} className='text-sm'>{item.deliveryType === "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
                     </View>
                     <View className="flex items-center gap-2 flex-row">
                       <AntDesign name="clockcircleo" size={15} color="gray" />
-                      <Text className='text-sm'>{item.timeOfDelivery}</Text>
+                      <Text style={{color: theme.input.text}} className='text-sm'>{item.timeOfDelivery}</Text>
                     </View>
                     </View>
                     <View>
                     {/* */}
                     <TouchableOpacity activeOpacity={0.7} onPress={() => handleFavorite(item.id)}>
                         {
-                            like === item.id ? <AntDesign name="heart" size={15} color="red" />  : <AntDesign name="hearto" size={15} color="black" />
+                            like === item.id ? <AntDesign name="heart" size={15} color={theme.icon.primary} />  : <AntDesign name="hearto" size={15} color={theme.text} />
                         }
                     </TouchableOpacity>
                     </View>

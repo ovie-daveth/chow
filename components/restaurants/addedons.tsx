@@ -4,9 +4,11 @@ import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors'
 import { formatCurrency } from '@/helpers/format-currency'
 import { RestaurantInterface } from '@/variables/restaurant'
+import { useTheme } from '@/contexts/themeContext'
 
 const Addendons = ({item}: {item: RestaurantInterface}) => {
 
+  const { theme } = useTheme();
   const {width} = useWindowDimensions()
   const styles = StyleSheet.create({
     addedon: {
@@ -17,13 +19,13 @@ const Addendons = ({item}: {item: RestaurantInterface}) => {
       gap: 10
     },
     ratebg: {
-               backgroundColor: Colors.light.search,
+               backgroundColor: theme.input.background,
                padding: 5,
                borderRadius: 100
              },
    
    tagText: {
-     color: 'gray',
+     color: theme.input.text,
    },
    addedonText: {
      color: "#C2410C",
@@ -31,7 +33,8 @@ const Addendons = ({item}: {item: RestaurantInterface}) => {
      fontSize: 12,
    },
    addtext: {
-     fontSize: 12
+     fontSize: 12,
+     color: theme.input.text
    }
  });
   return (

@@ -1,17 +1,67 @@
-import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image, TouchableOpacity, Appearance } from 'react-native';
 import React, { useState } from 'react';
 import * as Animatable from 'react-native-animatable';
 import { categories } from '@/constants/data';
 import { Colors } from '@/constants/Colors';
 import { AntDesign } from '@expo/vector-icons';
 import Listheader from './listheader';
+import { useTheme } from '@/contexts/themeContext';
 
 interface prop {
   isDetail?: boolean
 }
 const Categories: React.FC<prop> = ({isDetail}) => {
   const [active, setActive] = useState<number | null>(1);
+  const { theme } = useTheme();
+  const colorScheme = Appearance.getColorScheme()
 
+  const styles = StyleSheet.create({
+    container: {
+      paddingLeft: 15,
+    },
+    containere: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 5
+    },
+    content: {
+      marginRight: 10,
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 100,
+      width: 50,
+      height: 50,
+    },
+    separator: {
+      height: 10, 
+      width:20
+    },
+    active: {
+      backgroundColor: theme.button.background,
+    },
+    inactive: {
+      backgroundColor: colorScheme === "dark" ? theme.input.background : "#eee",
+    },
+    activeText: {
+      color: "#fff"
+    },
+    imageContainer: {
+      borderRadius: 100,
+    },
+    image: {
+      borderRadius: 100,
+      width: 35,
+      height: 35
+    },
+    addText: {
+      fontSize: 10,
+      color: theme.text,
+      marginLeft: -7
+    }
+  });
   const handlePress = (id: number, ref: any) => {
     setActive(id);
     if (ref?.animate) {
@@ -83,49 +133,3 @@ const Categories: React.FC<prop> = ({isDetail}) => {
 };
 
 export default Categories;
-
-const styles = StyleSheet.create({
-  container: {
-    paddingLeft: 15,
-  },
-  containere: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: 5
-  },
-  content: {
-    marginRight: 10,
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 100,
-    width: 50,
-    height: 50,
-  },
-  separator: {
-    height: 10, 
-    width:20
-  },
-  active: {
-    backgroundColor: Colors.light.buttons,
-  },
-  inactive: {
-    backgroundColor: '#eee',
-  },
-  activeText: {
-    color: "#fff"
-  },
-  imageContainer: {
-    borderRadius: 100,
-  },
-  image: {
-    borderRadius: 100,
-    width: 45,
-    height: 45
-  },
-  addText: {
-    fontSize: 10
-  }
-});

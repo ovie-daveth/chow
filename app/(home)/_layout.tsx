@@ -3,20 +3,23 @@ import React from 'react';
 import { Platform, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/Colors';
+import { useTheme } from '@/contexts/themeContext';
 
 export default function TabLayout() {
+
+  const { theme } = useTheme();
   return (
     <Tabs
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {
           position: 'absolute',
-          backgroundColor: Colors.light.search,
+          backgroundColor: theme.background,
           height: 70,
           borderRadius: 20,
           marginHorizontal: 20,
           marginBottom: 10,
-          shadowColor: '#000',
+          shadowColor: theme.text,
           shadowOffset: { width: 0, height: 4 },
           shadowOpacity: 0.3,
           shadowRadius: 10,
