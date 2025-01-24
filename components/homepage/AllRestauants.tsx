@@ -5,6 +5,7 @@ import { restaurantsList } from '@/constants/data'
 import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors'
 import { formatCurrency } from '@/helpers/format-currency'
+import {router} from "expo-router"
 
 const AllRestauants = ({state}: {state: string}) => {
 
@@ -83,7 +84,7 @@ const AllRestauants = ({state}: {state: string}) => {
               <View style={styles.content}>
                 <TouchableOpacity
                   activeOpacity={0.7}
-                  onPress={() => {}}
+                  onPress={() => {router.push(`/(home)/(restaurant)/details/${item?.id}`)}}
                   className="mx-5 flex-column items-start"
                 >
                   <Image

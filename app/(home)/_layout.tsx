@@ -45,7 +45,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="restaurants"
+        name="(restaurant)"
         options={{
           title: "Restaurants",
           tabBarIcon: ({ focused }) => (
