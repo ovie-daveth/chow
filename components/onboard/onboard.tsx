@@ -1,6 +1,7 @@
 import { View, Text, Image, useWindowDimensions } from 'react-native';
 import React from 'react';
 import * as Animatable from 'react-native-animatable';
+import { useTheme } from '@/contexts/themeContext';
 
 interface Prop {
   data: {
@@ -12,6 +13,7 @@ interface Prop {
 }
 
 const OnbordComponent = ({ data }: Prop) => {
+  const { theme } = useTheme();
     const {width} = useWindowDimensions()
   return (
     <View style={{width}} className='mt-20'>
@@ -37,14 +39,14 @@ const OnbordComponent = ({ data }: Prop) => {
         delay={500}
         style={{ alignItems: 'center' }}
       >
-        <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', color: theme.text }}>
           {data.title}
         </Text>
         <Text
           style={{
             textAlign: 'center',
             marginTop: 10,
-            color: '#555',
+            color: theme.text,
             paddingHorizontal: 20,
           }}
         >

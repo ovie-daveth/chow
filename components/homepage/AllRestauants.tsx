@@ -6,6 +6,7 @@ import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors'
 import { formatCurrency } from '@/helpers/format-currency'
 import {router} from "expo-router"
+import Addendons from '../restaurants/addedons'
 
 const AllRestauants = ({state}: {state: string}) => {
 
@@ -111,21 +112,7 @@ const AllRestauants = ({state}: {state: string}) => {
   ))}
 </View>
 
-                  <View style={styles.addedon} className="flex items-center gap-5 flex-row justify-between">
-                    <View style={styles.ratebg} className="flex items-center gap-1 flex-row">
-                      <AntDesign name="staro" size={15} color="orange" />
-                      <Text style={styles.addtext} className="text-sm">{item.ratings} ({item.noofrate})</Text>
-                    </View>
-                    <View className="flex items-center flex-row gap-1">
-                      <MaterialCommunityIcons name="dump-truck" size={17} color="gray" />
-                      <Text style={styles.addtext} className="text-sm">{item.deliveryType == "0" ? "Free" : formatCurrency(item.deliveryType)}</Text>
-                    </View>
-                    <View className="flex items-center gap-1 flex-row">
-                      <AntDesign name="clockcircleo" size={15} color="gray" />
-                      <Text style={styles.addtext} className="text-sm">{item.timeOfDelivery}</Text>
-                    </View>
-                      <Text style={styles.addedonText} className='bg-orange-600'>Closed</Text>
-                  </View>
+                <Addendons item={item} />
                   </View>
                 </TouchableOpacity>
               </View>

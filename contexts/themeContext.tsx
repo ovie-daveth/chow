@@ -1,14 +1,14 @@
-import { Colors } from "@/constants/Colors";
+import { Colors, ThemeColors } from "@/constants/Colors";
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { Appearance, ColorSchemeName } from "react-native";
 
-interface Theme {
-  backgroundColor: string;
-  textColor: string;
-}
+// interface Theme {
+//   backgroundColor: string;
+//   textColor: string;
+// }
 
 interface ThemeContextType {
-  theme: Theme;
+  theme: ThemeColors;
   toggleTheme: () => void;
 }
 
@@ -21,18 +21,13 @@ interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [colorScheme, setColorScheme] = useState<ColorSchemeName>(Appearance.getColorScheme());
 
-  const [theme, setTheme] = useState<Theme>({
-    backgroundColor: colorScheme === "dark" ? Colors.dark.background : Colors.light.background,
-    textColor: colorScheme === "dark" ? Colors.dark.text : Colors.light.text,
-  });
+  const [theme, setTheme] = useState<ThemeColors>(colorScheme === "dark" ? Colors.dark : Colors.light);
 
   useEffect(() => {
     const listener = ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
       setColorScheme(colorScheme);
-      setTheme({
-        backgroundColor: colorScheme === "dark" ? Colors.dark.background : Colors.light.background,
-        textColor: colorScheme === "dark" ? Colors.dark.text : Colors.light.text,
-      });
+      setTheme(
+        colorScheme === "dark" ? Colors.dark : Colors.light);
     };
 
     // Listen for system theme changes
@@ -42,10 +37,9 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => ({
-      backgroundColor: prevTheme.backgroundColor === Colors.light.background ? Colors.dark.background : Colors.light.background,
-      textColor: prevTheme.textColor === Colors.light.text ? Colors.dark.text : Colors.light.text,
-    }));
+    setTheme((prevTheme) =>
+      prevTheme === Colors.dark ? Colors.light : Colors.dark
+    );
   };
 
   return (

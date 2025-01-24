@@ -12,12 +12,11 @@ interface Prop {
 export const Button = ({title, onPress, Icon, cwidth}: Prop) => {
 
     const {width, height} = useWindowDimensions()
-    const theme = useTheme()
-     const [colorScheme, setColorScheme] = useState<ColorSchemeName>(Appearance.getColorScheme());
+    const {theme} = useTheme()
 
     const styles = StyleSheet.create({
         ButtonContainer: {
-            backgroundColor: Colors.light.buttons,
+            backgroundColor: theme.button.background ,
             width: width / (cwidth ?? 1.1),
             height: 45,
             marginTop: 15,
@@ -33,7 +32,7 @@ export const Button = ({title, onPress, Icon, cwidth}: Prop) => {
             width: "100%",
         },
         buttonText: {
-            color: colorScheme === "dark" ? Colors.light.background : Colors.light.text,
+            color: theme.button.text,
         }
     })
   return (

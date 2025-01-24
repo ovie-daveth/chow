@@ -1,4 +1,4 @@
-import { View, FlatList, Text, TouchableOpacity } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity, ColorSchemeName } from 'react-native';
 import React, { useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar'; 
@@ -6,10 +6,14 @@ import * as Animatable from 'react-native-animatable';
 import { router } from 'expo-router';
 import OnbordComponent from '@/components/onboard/onboard';
 import { onboardData } from '@/components/onboard/data';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/atoms/buttons';
+import { useTheme } from '@/contexts/themeContext';
+import { Appearance } from 'react-native';
 
 const Onboard = () => {
+  const { theme, toggleTheme } = useTheme();
+   const colorScheme = Appearance.getColorScheme()
   const [currentIndex, setCurrentIndex] = useState(0); // Track current slide index
   const flatListRef = useRef<FlatList>(null); // Reference to FlatList
   const totalSlides = onboardData.length;
@@ -50,8 +54,8 @@ const Onboard = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar style="dark" />
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
       <FlatList
         ref={flatListRef}
         data={onboardData}
@@ -72,37 +76,29 @@ const Onboard = () => {
           duration={500}
           style={{
             height: 5,
-            backgroundColor: '#FFB84C',
+            backgroundColor: theme.primary,
             width: `${progress * 100}%`,
           }}
         />
       </View>
 
-        <View className={`absolute top-2/3 ${currentIndex >= totalSlides - 1 ? "-translate-x-10" : "-translate-x-28"} translate-y-[100px] left-1/2 `}>
+        <View className={`absolute top-2/3 ${currentIndex >= totalSlides - 1 ? "-translate-x-2" : "-translate-x-20"} translate-y-[100px] left-1/2 `}>
         {
           currentIndex >= totalSlides - 1 ? <View  className='flex flex-row items-center gap-3 justify-center w-[20%]'>
-            <TouchableOpacity activeOpacity={0.7} onPress={handlePrevious}>
-            <AntDesign name="leftcircle" size={24} color="orange" className='mt-4' />
-            </TouchableOpacity>
              <Button onPress={handleNext} cwidth={1.5} title={'Get Started'} />
           </View> : <Animatable.View
                       animation={customFade}
                       iterationCount="infinite"
                       direction="alternate" // Makes it fade in and out
                       duration={2000} // Adjust the duration as needed
-                      className='flex flex-row gap-3 item'>
-              <TouchableOpacity onPress={handlePrevious} activeOpacity={0.7}>
-              <AntDesign name="left" size={24} color="lightgray" />
-              </TouchableOpacity>
+                      className='flex flex-row gap-1 items-center item'>
                 <Text
                    
-                    className="text-gray-400"
+                  style={{color: theme.text}}
               >
                 Swipe to continue
               </Text>
-              <TouchableOpacity onPress={handleNext} activeOpacity={0.7}>
-              <AntDesign name="right" size={24} color="lightgray" />
-              </TouchableOpacity>
+              <Feather name="chevrons-right" size={16} style={{color: theme.text, marginTop: 2}}/>
           </Animatable.View>
         }
         </View>

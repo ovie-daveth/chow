@@ -7,6 +7,7 @@ import cat1 from "@/assets/images/food1.png"
 import cat2 from "@/assets/images/food2.png"
 import cat3 from "@/assets/images/food3.png"
 import cat4 from "@/assets/images/food4.png"
+import { RestaurantInterface } from "@/variables/restaurant"
 
 export const categories = [
     {
@@ -72,7 +73,7 @@ export const categories = [
   ]
   
 
-  export const restaurantsList = [
+  export const restaurantsList: RestaurantInterface[] = [
     {
       id: 1,
       name: "Rose Garden Restaurants",
