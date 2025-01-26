@@ -1,6 +1,14 @@
-import { Redirect } from 'expo-router';
+import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
 
-
-export default function HomeScreen() {
-  return <Redirect href={'/(auth)/onboard'} />
+const Index = () => {
+  return (
+    <View>
+      <Text>Index</Text>
+    </View>
+  )
 }
+
+export default Index
+
+const styles = StyleSheet.create({})
